@@ -1,16 +1,7 @@
 pragma solidity ^0.4.16;
 
 import "./ConvertLib.sol";
-// Answers to the math problems
-	 uint puzzle1 = 50;
-	 uint puzzle2 = 120;
-	 uint puzzle3 = 43;
-// event Angular will check if math problem answer is correct
-	 event correctPuzzle (
-	  uint _puzzle1,
-	  uint _puzzle2,
-	  uint _puzzle3
-	         );
+
 
 contract MetaCoin {
 	mapping (address => uint) balances;
@@ -20,9 +11,19 @@ contract MetaCoin {
 	function MetaCoin() public {
 		balances[tx.origin] = 10000;
 	}
-// need avice to add event into this send coin so if math puzzle is correct the coin will auto send to their adress.
-	function sendCoin(address receiver, uint amount) public returns(bool sufficient) {
-		if (balances[msg.sender] < amount) return false;
+	event CorrectPuzzle(address winnerAddress, uint puzzleIdentifier);
+//If else statement not compiling
+  /*function checkAnswer(uint answer, uint solution) {
+  	if (answer != solution ) return false;
+  	answer == solution;
+  	return true;
+  }*/
+
+	function sendCoin(address receiver, uint amount, uint answer) public returns(bool sufficient) {
+		//
+	    CorrectPuzzle(receiver, answer);
+	    msg.sender.send(5);
+   if (balances[msg.sender] < amount) return false;
 		balances[msg.sender] -= amount;
 		balances[receiver] += amount;
 		Transfer(msg.sender, receiver, amount);
