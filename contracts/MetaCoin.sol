@@ -2,7 +2,15 @@ pragma solidity ^0.4.16;
 
 import "./ConvertLib.sol";
 
+	 uint puzzle1 = 50;
+	 uint puzzle2 = 120;
+	 uint puzzle3 = 43;
 
+	 event correctPuzzle (
+	  uint _puzzle1,
+	  uint _puzzle2,
+	  uint _puzzle3
+	         );
 contract MetaCoin {
 	mapping (address => uint) balances;
 
